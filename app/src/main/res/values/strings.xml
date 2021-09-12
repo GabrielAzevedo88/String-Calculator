@@ -5,4 +5,7 @@
     <string name="clear_symbol">c</string>
     <string name="calculate_symbol">=</string>
 
+    <string name="error_delimiter">Forbidden delimiter</string>
+    <string name="error_negative">Negatives not allowed: %s</string>
+
 </resources>

@@ -1,8 +1,10 @@
 package com.mube.stringcalculator.domain.usecase
 
+import android.content.res.Resources
 import org.junit.Before
 import org.junit.Test
 import com.google.common.truth.Truth.assertThat
+import io.mockk.mockkClass
 
 class CalculatorUseCaseImpTest {
 
@@ -10,7 +12,7 @@ class CalculatorUseCaseImpTest {
 
     @Before
     fun setup() {
-        sut = CalculatorUseCaseImp()
+        sut = CalculatorUseCaseImp(mockkClass(Resources::class))
     }
 
     @Test
