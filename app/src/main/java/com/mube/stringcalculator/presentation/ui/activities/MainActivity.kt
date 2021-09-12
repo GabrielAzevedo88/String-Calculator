@@ -5,7 +5,7 @@ import android.os.Bundle
 import com.mube.stringcalculator.R
 import com.mube.stringcalculator.databinding.ActivityMainBinding
 import com.mube.stringcalculator.presentation.ui.viewmodel.MainViewModel
-import com.mube.stringcalculator.utils.bindingContentView
+import com.mube.stringcalculator.utils.extensions.bindingContentView
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {

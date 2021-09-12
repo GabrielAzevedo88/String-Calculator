@@ -23,3 +23,11 @@ fun String.getDelimiter(delimiterSymbol: String, default: String): String {
 fun String.firstLine(): String = split("\n").first()
 
 fun String.isChar(): Boolean = (this.toIntOrZero() == 0)
+
+fun String.clearWhiteSpaces() : String = replace("\\s".toRegex(), "")
+
+fun String.clearDelimiter(delimiter: String) : String = replace(delimiter, "")
+
+fun String.isNegativeNumber(): Boolean = this.startsWith("-")
+
+fun MutableList<String>.toSingleString() = if (this.size == 1) this.first() else joinToString(", ")

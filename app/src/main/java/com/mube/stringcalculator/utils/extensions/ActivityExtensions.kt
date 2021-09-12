@@ -1,4 +1,4 @@
-package com.mube.stringcalculator.utils
+package com.mube.stringcalculator.utils.extensions
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil

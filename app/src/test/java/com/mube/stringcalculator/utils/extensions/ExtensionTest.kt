@@ -85,4 +85,36 @@ class ExtensionTest {
         assertThat(result).isEqualTo(expected)
     }
 
+    @Test
+    fun isNegativeSuccess() {
+        val result = "-8".isNegativeNumber()
+        val expected = true
+
+        assertThat(result).isEqualTo(expected)
+    }
+
+    @Test
+    fun isNegativeError() {
+        val result = "8".isNegativeNumber()
+        val expected = false
+
+        assertThat(result).isEqualTo(expected)
+    }
+
+    @Test
+    fun listToSingleString() {
+        val result = mutableListOf("1", "2", "3", "4", "5").toSingleString()
+        val expected = "1, 2, 3, 4, 5"
+
+        assertThat(result).isEqualTo(expected)
+    }
+
+    @Test
+    fun listToSingleStringWithOneValue() {
+        val result = mutableListOf("1").toSingleString()
+        val expected = "1"
+
+        assertThat(result).isEqualTo(expected)
+    }
+
 }
