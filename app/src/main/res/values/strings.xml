@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">String Calculator</string>
+
+    <string name="result_label">Result:</string>
+    <string name="clear_symbol">c</string>
+    <string name="calculate_symbol">=</string>
+
+    <string name="error_delimiter">Forbidden delimiter</string>
+    <string name="error_negative">Negatives not allowed: %s</string>
+
 </resources>
