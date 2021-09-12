@@ -28,7 +28,10 @@ class MainViewModel(private val useCase: CalculatorUseCase) : ViewModel() {
 
     private fun handleResult(result: InputResult) {
         when (result) {
-            is Success -> _result.value = result.value.toString()
+            is Success -> {
+                _result.value = result.value.toString()
+                _errorMsg.value = ""
+            }
             is Error -> {
                 _errorMsg.value = result.message
                 _result.value = ""
