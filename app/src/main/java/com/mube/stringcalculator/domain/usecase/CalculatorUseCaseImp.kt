@@ -18,17 +18,17 @@ class CalculatorUseCaseImp(private val resources: Resources) : CalculatorUseCase
         val negatives: MutableList<String> = mutableListOf()
 
         if (inputValue.isNotBlank()) {
-            val delimiter = inputValue
+            val delimiters: List<String> = inputValue
                 .getDelimiter(DELIMITER_CONTROL_SYMBOL, DEFAULT_DELIMITER)
 
-            if (delimiter.isForbiddenDelimiter()) {
+            if (delimiters.isForbiddenDelimiter()) {
                 return Error(resources.getString(R.string.error_delimiter))
             }
 
             val numbers = inputValue
-                .clearDelimiter(DELIMITER_CONTROL_SYMBOL + delimiter)
+                .clearDelimiter(DELIMITER_CONTROL_SYMBOL + delimiters.toSingleString())
                 .clearNewLines()
-                .split(delimiter)
+                .split(*delimiters.toTypedArray())
 
             numbers.forEach { number ->
                 if (number.isNegativeNumber()) {
@@ -42,9 +42,9 @@ class CalculatorUseCaseImp(private val resources: Resources) : CalculatorUseCase
         return if (negatives.isEmpty()) {
             Success(sum)
         } else {
-            Error(resources.getString(R.string.error_negative, negatives.toSingleString()))
+            Error(resources.getString(R.string.error_negative, negatives.toList().toSingleString()))
         }
     }
 }
 
-private fun String.isForbiddenDelimiter(): Boolean = (this == FORBIDDEN_DELIMITER)
+private fun List<String>.isForbiddenDelimiter(): Boolean = (this.any { it == FORBIDDEN_DELIMITER })

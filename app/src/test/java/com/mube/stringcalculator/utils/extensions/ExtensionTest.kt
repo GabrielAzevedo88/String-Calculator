@@ -22,6 +22,22 @@ class ExtensionTest {
     }
 
     @Test
+    fun stringToLargeIntSuccess() {
+        val result = "1001".toIntOrZero()
+        val expected = 0
+
+        assertThat(result).isEqualTo(expected)
+    }
+
+    @Test
+    fun stringToLargeIntError() {
+        val result = "1000".toIntOrZero()
+        val expected = 1000
+
+        assertThat(result).isEqualTo(expected)
+    }
+
+    @Test
     fun clearNewLinesExtension() {
         val result = "1\n23\n45".clearNewLines()
         val expected = "12345"
@@ -103,7 +119,7 @@ class ExtensionTest {
 
     @Test
     fun listToSingleString() {
-        val result = mutableListOf("1", "2", "3", "4", "5").toSingleString()
+        val result = listOf("1", "2", "3", "4", "5").toSingleString()
         val expected = "1, 2, 3, 4, 5"
 
         assertThat(result).isEqualTo(expected)
@@ -111,7 +127,7 @@ class ExtensionTest {
 
     @Test
     fun listToSingleStringWithOneValue() {
-        val result = mutableListOf("1").toSingleString()
+        val result = listOf("1").toSingleString()
         val expected = "1"
 
         assertThat(result).isEqualTo(expected)
