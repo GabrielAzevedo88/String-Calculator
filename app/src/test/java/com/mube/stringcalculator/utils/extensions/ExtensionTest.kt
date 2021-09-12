@@ -29,4 +29,60 @@ class ExtensionTest {
         assertThat(result).isEqualTo(expected)
     }
 
+    @Test
+    fun delimiterSuccess() {
+        val result = "//$$\n1\n23\n45".getDelimiter("//", ",")
+        val expected = "$$"
+
+        assertThat(result).isEqualTo(expected)
+    }
+
+    @Test
+    fun delimiterNoSymbolError() {
+        val result = "\n1\n23\n45".getDelimiter("//", ",")
+        val expected = ","
+
+        assertThat(result).isEqualTo(expected)
+    }
+
+    @Test
+    fun delimiterNoValueError() {
+        val result = "//\n1\n23\n45".getDelimiter("//", ",")
+        val expected = ","
+
+        assertThat(result).isEqualTo(expected)
+    }
+
+    @Test
+    fun delimiterNumberError() {
+        val result = "//1\n23\n45".getDelimiter("//", ",")
+        val expected = ","
+
+        assertThat(result).isEqualTo(expected)
+    }
+
+    @Test
+    fun firsLineOnly() {
+        val result = "1\n23\n45".firstLine()
+        val expected = "1"
+
+        assertThat(result).isEqualTo(expected)
+    }
+
+    @Test
+    fun valueIsCharSuccess() {
+        val result = "@@".isChar()
+        val expected = true
+
+        assertThat(result).isEqualTo(expected)
+    }
+
+    @Test
+    fun valueIsCharError() {
+        val result = "11".isChar()
+        val expected = false
+
+        assertThat(result).isEqualTo(expected)
+    }
+
 }
