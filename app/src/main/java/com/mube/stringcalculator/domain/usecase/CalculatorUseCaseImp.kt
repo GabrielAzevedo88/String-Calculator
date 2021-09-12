@@ -1,6 +1,7 @@
 package com.mube.stringcalculator.domain.usecase
 
-import com.mube.stringcalculator.utils.orZero
+import com.mube.stringcalculator.utils.extensions.clearNewLines
+import com.mube.stringcalculator.utils.extensions.toIntOrZero
 
 private const val DELIMITER = ","
 
@@ -10,17 +11,15 @@ class CalculatorUseCaseImp : CalculatorUseCase {
         var sum = 0
 
         if (inputValue.isNotBlank()) {
-            val numbers = inputValue.split(DELIMITER)
+            val numbers = inputValue
+                .clearNewLines()
+                .split(DELIMITER)
 
             numbers.forEach { number ->
-                sum += number.trim().filterValue()
+                sum += number.trim().toIntOrZero()
             }
         }
 
         return sum
     }
 }
-
-private fun String.filterValue(): Int = this.toIntOrNull()?.run {
-    toInt()
-}.orZero()
