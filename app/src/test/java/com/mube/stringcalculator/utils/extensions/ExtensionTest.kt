@@ -48,7 +48,7 @@ class ExtensionTest {
     @Test
     fun delimiterSuccess() {
         val result = "//$$\n1\n23\n45".getDelimiter("//", ",")
-        val expected = "$$"
+        val expected = listOf("$$")
 
         assertThat(result).isEqualTo(expected)
     }
@@ -56,7 +56,7 @@ class ExtensionTest {
     @Test
     fun delimiterNoSymbolError() {
         val result = "\n1\n23\n45".getDelimiter("//", ",")
-        val expected = ","
+        val expected = listOf(",")
 
         assertThat(result).isEqualTo(expected)
     }
@@ -64,7 +64,7 @@ class ExtensionTest {
     @Test
     fun delimiterNoValueError() {
         val result = "//\n1\n23\n45".getDelimiter("//", ",")
-        val expected = ","
+        val expected = listOf(",")
 
         assertThat(result).isEqualTo(expected)
     }
@@ -72,7 +72,15 @@ class ExtensionTest {
     @Test
     fun delimiterNumberError() {
         val result = "//1\n23\n45".getDelimiter("//", ",")
-        val expected = ","
+        val expected = listOf(",")
+
+        assertThat(result).isEqualTo(expected)
+    }
+
+    @Test
+    fun multipleDelimiterSuccess() {
+        val result = "//$,%\n1\n23\n45".getDelimiter("//", ",")
+        val expected = listOf("$", "%")
 
         assertThat(result).isEqualTo(expected)
     }
