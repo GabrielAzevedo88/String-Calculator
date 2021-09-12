@@ -17,7 +17,10 @@ fun String.getDelimiter(delimiterSymbol: String, default: String): List<String> 
         val delimiterLine = this.firstLine().removeText(delimiterSymbol).trim()
         val newDelimiterList = delimiterLine.split(",")
 
-        if (newDelimiterList.isNotEmpty()) {
+        if (newDelimiterList.isNotEmpty() &&
+            newDelimiterList.first().isNotBlank() &&
+            newDelimiterList.first().isChar()
+        ) {
             listDelimiter.clear()
             listDelimiter.addAll(newDelimiterList)
         }

@@ -23,7 +23,7 @@ class AppModuleTes : KoinTest {
     @Before
     fun setUp() {
         startKoin {
-            androidContext(mockkClass(Context::class))
+            androidContext(mockkClass(Context::class, relaxed = true))
             modules(AppModule.all)
         }
     }
